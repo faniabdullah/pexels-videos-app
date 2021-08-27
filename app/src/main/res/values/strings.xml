@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">vidio</string>
+    <string name="app_name">pexels-video</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
 </resources>
