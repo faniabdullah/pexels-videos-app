@@ -1,11 +1,10 @@
 package com.faniabdullah.pexels_video.data.local.entity
 
 import com.faniabdullah.pexels_video.data.remote.response.User
-import com.faniabdullah.pexels_video.data.remote.response.VideoFilesItem
 
 data class VideosEntity(
-    val user: List<User>,
-    val videosUser: VideoFilesItem
+    val user: User? = null,
+    val videosUser: List<VideoFileUser>
 )
 
 data class VideoFileUser(
