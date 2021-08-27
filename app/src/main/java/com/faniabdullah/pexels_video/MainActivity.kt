@@ -1,4 +1,4 @@
-package com.faniabdullah.vidio
+package com.faniabdullah.pexels_video
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

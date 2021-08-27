@@ -7,7 +7,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.faniabdullah.vidio"
+        applicationId "com.faniabdullah.pexel_video"
         minSdk 21
         targetSdk 30
         versionCode 1
