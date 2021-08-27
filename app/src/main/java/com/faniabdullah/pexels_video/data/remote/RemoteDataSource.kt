@@ -8,6 +8,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
+import javax.inject.Inject
 
 sealed class ApiResponse<out R> {
     data class Success<out T>(val data: T) : ApiResponse<T>()
@@ -16,7 +17,7 @@ sealed class ApiResponse<out R> {
 }
 
 
-class RemoteDataSource(private val apiService: ApiService) {
+class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
 
     @SuppressLint("CheckResult")
     fun getListVideoPopular(): Flowable<ApiResponse<List<VideosItem>>> {
