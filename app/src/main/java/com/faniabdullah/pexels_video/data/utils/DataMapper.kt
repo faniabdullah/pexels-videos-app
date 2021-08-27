@@ -7,22 +7,19 @@ object DataMapper {
     fun responseToVideoEntity(listVideosItem: List<VideosItem>): List<VideosEntity> {
         val resultList = mutableListOf<VideosEntity>()
         listVideosItem.forEach { response ->
-            var counter = 0
-            response.videoFiles?.forEach { videos ->
-                resultList.add(
-                    VideosEntity(
-                        user = response.user,
-                        fileType = videos.fileType,
-                        width = videos.width,
-                        link = videos.link,
-                        id = videos.id,
-                        quality = videos.quality,
-                        height = videos.height,
-                        picturesItem = response.videoPictures?.get(counter)?.picture
-                    )
+            val videos = response.videoFiles?.get(0)
+            resultList.add(
+                VideosEntity(
+                    user = response.user?.name.toString(),
+                    fileType = videos?.fileType,
+                    width = videos?.width,
+                    link = videos?.link,
+                    id = videos?.id,
+                    quality = videos?.quality,
+                    height = videos?.height,
+                    picturesItem = response.videoPictures?.get(0)?.picture
                 )
-                counter++
-            }
+            )
         }
 
         return resultList

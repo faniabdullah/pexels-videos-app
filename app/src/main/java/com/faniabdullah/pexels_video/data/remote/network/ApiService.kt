@@ -7,9 +7,9 @@ import retrofit2.http.Headers
 
 interface ApiService {
 
-    @GET("videos/popular?per_page=5")
+    @GET("videos/popular?per_page=30")
     @Headers(
-        "Authorization :Your API KEY"
+        "Authorization:Your Api Key"
     )
     fun getVideosPopular(): Flowable<Response>
 }
