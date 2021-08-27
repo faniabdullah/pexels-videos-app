@@ -4,10 +4,6 @@ import com.faniabdullah.pexels_video.data.remote.response.User
 
 data class VideosEntity(
     val user: User? = null,
-    val videosUser: List<VideoFileUser>
-)
-
-data class VideoFileUser(
     val fileType: String? = null,
     val width: Int? = null,
     val link: String? = null,
