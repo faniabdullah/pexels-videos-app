@@ -1,6 +1,5 @@
 package com.faniabdullah.pexels_video
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -10,8 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.faniabdullah.pexels_video.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.ActionBar
 
 
 @AndroidEntryPoint

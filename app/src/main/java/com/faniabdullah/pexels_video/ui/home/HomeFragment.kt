@@ -53,9 +53,11 @@ class HomeFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.recyclerView.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.recyclerView.visibility = View.GONE
                     if (it.data != null) {
                         videosAdapter.setData(it.data)
                     }
