@@ -27,6 +27,7 @@ class RepositoryVideos @Inject constructor(
         val data = remoteDataSource.getListVideoPopular()
         val compositeDisposable = CompositeDisposable()
         val result = PublishSubject.create<Resource<List<VideosEntity>>>()
+        result.onNext(Resource.Loading())
         val responseRemote = data
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

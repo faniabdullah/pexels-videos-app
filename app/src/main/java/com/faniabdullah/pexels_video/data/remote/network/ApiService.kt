@@ -9,7 +9,7 @@ interface ApiService {
 
     @GET("videos/popular?per_page=30")
     @Headers(
-        "Authorization:Your Api Key"
+        "Authorization:563492ad6f91700001000001000f13d7d5a24c58a244c7a53de05f52"
     )
     fun getVideosPopular(): Flowable<Response>
 }

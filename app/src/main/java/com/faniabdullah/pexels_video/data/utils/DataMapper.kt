@@ -17,7 +17,7 @@ object DataMapper {
                     id = videos?.id,
                     quality = videos?.quality,
                     height = videos?.height,
-                    picturesItem = response.videoPictures?.get(0)?.picture
+                    picturesItem = response.image
                 )
             )
         }

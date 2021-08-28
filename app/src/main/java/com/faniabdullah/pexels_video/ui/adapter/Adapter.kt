@@ -29,10 +29,13 @@ class Adapter : RecyclerView.Adapter<Adapter.ListViewHolder>() {
         fun bind(data: VideosEntity) {
             with(binding) {
                 user.text = data.user
+                val height = if (data.height ?: 0 > 300) 300 else data.height ?: 0
                 Glide.with(itemView.context)
                     .asBitmap()
                     .load(data.picturesItem)
-                    .override(data.width ?: 500, data.height ?: 500)
+                    .override(
+                        data.width ?: 500, height
+                    )
                     .into(object : CustomTarget<Bitmap>() {
                         override fun onResourceReady(
                             resource: Bitmap,
