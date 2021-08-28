@@ -14,7 +14,9 @@ import com.faniabdullah.pexels_video.R
 import com.faniabdullah.pexels_video.data.local.entity.VideosEntity
 import com.faniabdullah.pexels_video.databinding.ItemVideoBinding
 
-class Adapter : RecyclerView.Adapter<Adapter.ListViewHolder>() {
+class Adapter(
+    private val onClick: (VideosEntity) -> Unit
+) : RecyclerView.Adapter<Adapter.ListViewHolder>() {
     private var data = ArrayList<VideosEntity>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -51,6 +53,9 @@ class Adapter : RecyclerView.Adapter<Adapter.ListViewHolder>() {
                             // clear it here as you can no longer have the bitmap
                         }
                     })
+            }
+            itemView.setOnClickListener {
+                onClick(data)
             }
         }
 
