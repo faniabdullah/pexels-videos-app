@@ -1,8 +1,10 @@
 package com.faniabdullah.pexels_video
 
 import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.faniabdullah.pexels_video.data.local.entity.VideosEntity
 import com.faniabdullah.pexels_video.databinding.ActivityDetailVideosBinding
@@ -13,10 +15,11 @@ import com.google.android.exoplayer2.util.Util
 class DetailVideos : AppCompatActivity() {
 
     private var player: SimpleExoPlayer? = null
-    private var playWhenReady = true
+    private var playWhenReady = false
     private var currentWindow = 0
     private var playbackPosition = 0L
     private var data: VideosEntity? = null
+    private var flag = false
 
     companion object {
         const val KEY_DETAIL_VIDEOS = "key_detail_videos"
@@ -30,6 +33,16 @@ class DetailVideos : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(viewBinding.root)
         data = intent.getParcelableExtra(KEY_DETAIL_VIDEOS)
+        val fullscreenButton =
+            viewBinding.videoView.findViewById<FrameLayout>(R.id.exo_fullscreen_button)
+        fullscreenButton.setOnClickListener {
+            if (flag) {
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                flag = false
+            } else {
+
+            }
+        }
     }
 
     private fun initializePlayer() {
