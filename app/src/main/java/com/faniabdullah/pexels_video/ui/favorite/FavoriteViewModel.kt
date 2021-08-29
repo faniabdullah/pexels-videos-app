@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class FavoriteViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "You doesn't have a favorite video yet"
     }
     val text: LiveData<String> = _text
 }

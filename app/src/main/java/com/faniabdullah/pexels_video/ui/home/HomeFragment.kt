@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.faniabdullah.pexels_video.ui.detail.DetailVideos
 import com.faniabdullah.pexels_video.R
 import com.faniabdullah.pexels_video.data.local.entity.VideosEntity
 import com.faniabdullah.pexels_video.data.utils.Resource
 import com.faniabdullah.pexels_video.databinding.FragmentHomeBinding
 import com.faniabdullah.pexels_video.ui.adapter.Adapter
+import com.faniabdullah.pexels_video.ui.detail.DetailVideos
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
     private val videosAdapter: Adapter by lazy {
         Adapter(::showDetail)
     }
-
 
 
     private fun showDetail(videosEntity: VideosEntity) {
@@ -116,6 +115,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerVideos() {
+
+        binding.progressBar.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.GONE
+
         homeViewModel.videos.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Loading -> {

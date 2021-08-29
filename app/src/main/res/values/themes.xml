@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Vidio" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimary">@color/gray_700</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -18,7 +18,13 @@
     </style>
 
     <style name="CustomToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="titleTextColor">@color/black</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.SearchView." parent="android:Widget">
+        <item name="android:textColor">@color/black</item>
+        <item name="textFillColor">@color/black</item>
+        <item name="iconTint">@color/black</item>
     </style>
 
 </resources>
