@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".DetailVideos">
 
-    <com.google.android.exoplayer2.ui.PlayerControlView
+    <com.google.android.exoplayer2.ui.StyledPlayerView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:show_buffering="when_playing"
-        app:show_shuffle_button="true"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:controller_layout_id="@layout/exo_custom"
+        app:show_buffering="when_playing"
+        app:show_shuffle_button="true"
         tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,6 @@ class Adapter(
         private val binding = ItemVideoBinding.bind(itemView)
         fun bind(data: VideosEntity) {
             with(binding) {
-                user.text = data.user
                 val height = if (data.height ?: 0 > 300) 300 else data.height ?: 0
                 Glide.with(itemView.context)
                     .asBitmap()

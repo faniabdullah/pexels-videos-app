@@ -48,7 +48,8 @@ class HomeFragment : Fragment() {
             layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         }
 
-
+        binding.progressBar.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.GONE
         homeViewModel.videos.observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Loading -> {
@@ -57,7 +58,7 @@ class HomeFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    binding.recyclerView.visibility = View.GONE
+                    binding.recyclerView.visibility = View.VISIBLE
                     if (it.data != null) {
                         videosAdapter.setData(it.data)
                     }
