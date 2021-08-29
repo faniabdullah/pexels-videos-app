@@ -1,4 +1,4 @@
-package com.faniabdullah.pexels_video
+package com.faniabdullah.pexels_video.ui.detail
 
 import android.annotation.SuppressLint
 import android.os.Bundle

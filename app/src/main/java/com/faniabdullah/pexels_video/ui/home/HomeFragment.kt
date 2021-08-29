@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.faniabdullah.pexels_video.DetailVideos
+import com.faniabdullah.pexels_video.ui.detail.DetailVideos
 import com.faniabdullah.pexels_video.R
 import com.faniabdullah.pexels_video.data.local.entity.VideosEntity
 import com.faniabdullah.pexels_video.data.utils.Resource
