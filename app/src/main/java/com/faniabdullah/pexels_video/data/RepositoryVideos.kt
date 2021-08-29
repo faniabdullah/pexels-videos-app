@@ -58,4 +58,40 @@ class RepositoryVideos @Inject constructor(
 
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
+
+    override fun getSearchVideos(s: String): Flowable<Resource<List<VideosEntity>>> {
+        val data = remoteDataSource.getSearchVideo(s)
+        val compositeDisposable = CompositeDisposable()
+        val result = PublishSubject.create<Resource<List<VideosEntity>>>()
+        result.onNext(Resource.Loading())
+        val responseRemote = data
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .take(1)
+            .doOnComplete {
+                compositeDisposable.clear()
+            }
+            .subscribe({ response ->
+                result.onNext(Resource.Loading())
+                when (response) {
+                    is ApiResponse.Success -> {
+                        val videosEntity = DataMapper.responseToVideoEntity(response.data)
+                        result.onNext(Resource.Success(videosEntity))
+                    }
+                    is ApiResponse.Empty -> {
+                        result.onNext(Resource.Error("data empty", null))
+                    }
+                    is ApiResponse.Error -> {
+                        result.onNext(Resource.Error(response.errorMessage, null))
+                    }
+                }
+
+            }, {
+                result.onNext(Resource.Error(it.message.toString(), null))
+            })
+
+        compositeDisposable.add(responseRemote)
+
+        return result.toFlowable(BackpressureStrategy.BUFFER)
+    }
 }

@@ -43,4 +43,28 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
     }
 
+
+    @SuppressLint("CheckResult")
+    fun getSearchVideo(search: String): Flowable<ApiResponse<List<VideosItem>>> {
+        val resultData = PublishSubject.create<ApiResponse<List<VideosItem>>>()
+        val client = apiService.searchVideos(search)
+        client
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .take(1)
+            .subscribe({ response ->
+                val dataVideos = response.videos
+                if (dataVideos != null) {
+                    resultData.onNext(
+                        if (dataVideos.isNotEmpty()) ApiResponse.Success(dataVideos) else ApiResponse.Empty
+                    )
+                }
+            }, {
+                resultData.onNext(
+                    ApiResponse.Error(it.message.toString())
+                )
+            })
+
+        return resultData.toFlowable(BackpressureStrategy.BUFFER)
+    }
 }

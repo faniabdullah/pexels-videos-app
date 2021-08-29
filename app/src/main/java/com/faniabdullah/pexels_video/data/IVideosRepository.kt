@@ -6,4 +6,5 @@ import io.reactivex.Flowable
 
 interface IVideosRepository {
     fun getPopularVideos(): Flowable<Resource<List<VideosEntity>>>
+    fun getSearchVideos(s : String): Flowable<Resource<List<VideosEntity>>>
 }
