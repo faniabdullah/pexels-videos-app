@@ -97,6 +97,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerSearchVideos(search: String) {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.GONE
+
         homeViewModel.searchVideos(search).observe(viewLifecycleOwner, {
             when (it) {
                 is Resource.Loading -> {
